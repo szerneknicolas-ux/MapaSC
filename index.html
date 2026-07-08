@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapa SC Freelance — Encontre trabalho e freelas em Santa Catarina</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:        oklch(0.67 0.11 82);
+      --gold-light:  oklch(0.72 0.12 82);
+      --gold-dark:   oklch(0.58 0.11 75);
+      --gold-soft:   oklch(0.92 0.04 82);
+      --ink:         oklch(0.17 0 0);
+      --graphite:    oklch(0.42 0 0);
+      --mist:        oklch(0.972 0 0);
+      --border:      oklch(0.90 0 0);
+      --white:       #ffffff;
+      --gold-grad:   linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+      --radius:      0.5rem;
+    }
+
+    body {
+      font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+      background: var(--white);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .gold-text {
+      background: var(--gold-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* NAV */
+    nav {
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--ink);
+      border-bottom: none;
+    }
+    nav img { height: 58px; object-fit: contain; }
+
+    /* SECTION BASE */
+    .section { padding: 80px 24px; }
+    .section-inner { max-width: 900px; margin: 0 auto; }
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .section-title em {
+      font-style: italic;
+      background: var(--gold-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .section-sub { color: var(--graphite); font-size: 1rem; margin-bottom: 48px; line-height: 1.75; }
+
+    .bg-mist { background: var(--mist); }
+    .bg-ink  { background: var(--ink); color: var(--white); }
+    .bg-ink .eyebrow { color: var(--gold); }
+    .bg-ink .section-title { color: var(--white); }
+
+    /* BTN */
+    .btn {
+      display: inline-block;
+      background: var(--gold-grad);
+      color: var(--white);
+      padding: 18px 44px;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      box-shadow: 0 4px 20px oklch(0.67 0.11 82 / 0.35);
+    }
+    .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-lg { padding: 20px 56px; font-size: 1.1rem; }
+
+    /* ══════════════════════════════════════════
+       BLOCO 1 — HERO (Vender Sozinho)
+    ══════════════════════════════════════════ */
+    .hero {
+      background: var(--white);
+      text-align: center;
+      padding: 72px 24px 64px;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      background: var(--gold-soft);
+      color: var(--gold-dark);
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--ink);
+      max-width: 780px;
+      margin: 0 auto 20px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      background: var(--gold-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      color: var(--graphite);
+      font-size: 1.05rem;
+      max-width: 580px;
+      margin: 0 auto 40px;
+      line-height: 1.75;
+    }
+    .hero-woman-img {
+      display: block;
+      max-width: 360px;
+      width: 100%;
+      margin: 0 auto 36px;
+      filter: drop-shadow(0 16px 32px rgba(0,0,0,0.13));
+    }
+    .hero-badges {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+    .hero-badge {
+      color: var(--graphite);
+      font-size: 0.82rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero-badge::before { content: "✓"; color: var(--gold); font-weight: bold; }
+
+    /* ══════════════════════════════════════════
+       BLOCO 2 — DEPOIMENTOS
+    ══════════════════════════════════════════ */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .t-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+    }
+    .t-stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 12px; }
+    .t-quote {
+      color: var(--graphite);
+      font-size: 0.93rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .t-quote::before { content: '"'; color: var(--gold); font-size: 1.3rem; line-height: 0; vertical-align: -4px; }
+    .t-quote::after  { content: '"'; color: var(--gold); font-size: 1.3rem; line-height: 0; vertical-align: -4px; }
+    .t-author { display: flex; align-items: center; gap: 12px; }
+    .t-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--gold-grad);
+      color: var(--white);
+      font-size: 0.8rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .t-name { font-weight: 600; font-size: 0.88rem; }
+    .t-city { font-size: 0.78rem; color: var(--graphite); }
+
+    /* ══════════════════════════════════════════
+       BLOCO 3 — DOR LATENTE PRINCIPAL
+    ══════════════════════════════════════════ */
+    .pain-5-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+    .pain-card {
+      border-left: 3px solid var(--gold);
+      background: var(--white);
+      border-radius: 0 10px 10px 0;
+      padding: 20px 22px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+      font-size: 0.93rem;
+      color: var(--graphite);
+      line-height: 1.65;
+    }
+    .pain-card strong { color: var(--ink); display: block; font-size: 0.95rem; margin-bottom: 4px; }
+
+    /* bloco texto longo dor */
+    .pain-prose {
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: 1rem;
+      line-height: 2;
+      color: var(--graphite);
+    }
+    .pain-prose p { margin-bottom: 14px; }
+    .pain-prose .list-items {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin: 16px 0;
+      padding-left: 20px;
+    }
+    .pain-prose .list-items li { list-style: disc; color: var(--graphite); }
+    .pain-prose .thoughts {
+      background: var(--mist);
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin: 20px 0;
+      font-style: italic;
+    }
+    .pain-prose .thoughts li {
+      list-style: none;
+      padding: 4px 0;
+      color: var(--graphite);
+    }
+    .pain-prose .thoughts li::before { content: "→ "; color: var(--gold); font-style: normal; font-weight: 700; }
+    .pain-prose .direction {
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    /* ══════════════════════════════════════════
+       BLOCO 4 — TRANSIÇÃO DOR → SOLUÇÃO
+    ══════════════════════════════════════════ */
+    .transition-box {
+      background: var(--ink);
+      border-radius: 16px;
+      padding: 48px 40px;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .transition-box h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+    .transition-box h2 em {
+      font-style: italic;
+      background: var(--gold-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .transition-box p { color: oklch(0.72 0 0); font-size: 1rem; line-height: 1.8; margin-bottom: 12px; }
+    .direction-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 28px 0;
+      text-align: left;
+    }
+    .direction-item {
+      background: oklch(0.24 0 0);
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: oklch(0.78 0 0);
+    }
+    .direction-item::before { content: "✓"; color: var(--gold); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+    /* ══════════════════════════════════════════
+       BLOCO 5 — AGORA VOCÊ VAI
+    ══════════════════════════════════════════ */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .benefit-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      background: var(--white);
+    }
+    .benefit-icon {
+      width: 44px; height: 44px;
+      background: var(--gold-soft);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+    }
+    .benefit-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+    .benefit-card p  { color: var(--graphite); font-size: 0.88rem; line-height: 1.6; }
+
+    /* ══════════════════════════════════════════
+       BLOCO 6 — O QUE VOCÊ RECEBE + BÔNUS
+    ══════════════════════════════════════════ */
+    .offer-wrap { max-width: 660px; margin: 0 auto; }
+    .mockup-img { max-width: 480px; width: 100%; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.18)); }
+    .offer-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 44px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.07);
+    }
+    .offer-tag {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 4px;
+      margin-bottom: 14px;
+    }
+    .offer-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .offer-list { list-style: none; margin-bottom: 28px; }
+    .offer-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.93rem;
+      display: flex; align-items: center; gap: 10px;
+      color: var(--graphite);
+    }
+    .offer-list li::before { content: "✓"; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+    .offer-old { color: var(--graphite); text-decoration: line-through; font-size: 0.85rem; margin-bottom: 4px; }
+    .offer-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem; font-weight: 700;
+      color: var(--ink); line-height: 1; margin-bottom: 6px;
+    }
+    .offer-installment { color: var(--graphite); font-size: 0.85rem; margin-bottom: 28px; }
+
+    .bonuses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .bonus-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      background: var(--white);
+    }
+    .bonus-num {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 6px;
+    }
+    .bonus-card h3 { font-size: 0.93rem; font-weight: 700; margin-bottom: 6px; }
+    .bonus-card p  { color: var(--graphite); font-size: 0.85rem; line-height: 1.6; }
+    .bonus-val { margin-top: 10px; font-size: 0.8rem; color: var(--graphite); }
+    .bonus-val s { color: var(--border); }
+
+    /* ══════════════════════════════════════════
+       BLOCO 7 — PARA QUEM SERVE
+    ══════════════════════════════════════════ */
+    .forwhom-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+    .forwhom-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    .forwhom-item::before {
+      content: "✓";
+      color: var(--gold); font-weight: 700;
+      flex-shrink: 0; margin-top: 1px;
+    }
+
+    /* ══════════════════════════════════════════
+       BLOCO 8 — ANCORAGEM COM PREÇO
+    ══════════════════════════════════════════ */
+    .price-table { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; max-width: 560px; }
+    .price-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.92rem; color: var(--graphite);
+    }
+    .price-row:last-child { border-bottom: none; }
+    .price-row.subtotal { background: var(--mist); font-weight: 600; color: var(--ink); }
+    .price-row.final-price {
+      background: var(--gold-grad);
+      color: var(--white); font-weight: 700; font-size: 1.05rem;
+    }
+
+    /* ══════════════════════════════════════════
+       BLOCO 9 / 12 — VALOR (CTA COMPRA)
+    ══════════════════════════════════════════ */
+    .cta-box {
+      background: var(--ink);
+      border-radius: 20px;
+      padding: 56px 40px;
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .cta-box .eyebrow { color: var(--gold); margin-bottom: 14px; }
+    .cta-box h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 32px;
+    }
+    .cta-box h2 em {
+      font-style: italic;
+      background: var(--gold-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .cta-list {
+      list-style: none;
+      text-align: left;
+      display: inline-block;
+      margin: 0 auto 28px;
+    }
+    .cta-list li {
+      padding: 8px 0;
+      display: flex; align-items: center; gap: 10px;
+      color: oklch(0.75 0 0); font-size: 0.92rem;
+      border-bottom: 1px solid oklch(0.27 0 0);
+    }
+    .cta-list li::before { content: "✓"; color: var(--gold); font-weight: 700; }
+    .cta-old { color: oklch(0.52 0 0); font-size: 0.88rem; margin-bottom: 4px; }
+    .cta-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.4rem; font-weight: 700; line-height: 1;
+      background: var(--gold-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 4px;
+    }
+    .cta-install { color: oklch(0.58 0 0); font-size: 0.85rem; margin-bottom: 32px; }
+    .cta-badges { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 16px; }
+    .cta-badge { color: oklch(0.58 0 0); font-size: 0.8rem; display: flex; align-items: center; gap: 6px; }
+    .cta-badge::before { content: "🔒"; font-size: 0.75rem; }
+
+    /* ══════════════════════════════════════════
+       BLOCO 10 — CONVERSA SÉRIA
+    ══════════════════════════════════════════ */
+    .honest-box {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 36px;
+      color: var(--graphite);
+      font-size: 0.95rem;
+      line-height: 1.85;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .honest-box p { margin-bottom: 16px; }
+    .honest-box strong { color: var(--ink); }
+
+    /* ══════════════════════════════════════════
+       BLOCO 11 — AUTORIDADE
+    ══════════════════════════════════════════ */
+    .author-card { display: flex; gap: 36px; align-items: flex-start; flex-wrap: wrap; }
+    .author-photo {
+      width: 130px; height: 130px;
+      border-radius: 50%; object-fit: cover;
+      flex-shrink: 0;
+      border: 3px solid var(--gold-soft);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    }
+    .author-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 700; margin-bottom: 14px;
+    }
+    .author-text p { color: var(--graphite); font-size: 0.93rem; line-height: 1.8; margin-bottom: 12px; }
+    .story-jobs { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+    .story-job {
+      background: var(--mist); border: 1px solid var(--border);
+      border-radius: 6px; padding: 4px 14px; font-size: 0.85rem; color: var(--graphite);
+    }
+
+    /* ══════════════════════════════════════════
+       BLOCO 13 — FAQ
+    ══════════════════════════════════════════ */
+    .faq-list { display: flex; flex-direction: column; gap: 4px; }
+    details.faq {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px; overflow: hidden;
+    }
+    details.faq summary {
+      list-style: none;
+      padding: 18px 20px;
+      font-weight: 600; font-size: 0.93rem;
+      cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      user-select: none;
+    }
+    details.faq summary::-webkit-details-marker { display: none; }
+    details.faq summary::after { content: "+"; color: var(--gold); font-size: 1.3rem; font-weight: 400; }
+    details.faq[open] summary::after { content: "−"; }
+    details.faq p { padding: 0 20px 18px; color: var(--graphite); font-size: 0.9rem; line-height: 1.7; }
+
+    /* STICKY BAR */
+    .sticky-bar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--ink);
+      padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      z-index: 100;
+      box-shadow: 0 -4px 24px rgba(0,0,0,0.2);
+    }
+    .sticky-bar-text { font-size: 0.82rem; color: oklch(0.65 0 0); }
+    .sticky-bar-price { font-weight: 700; font-size: 1rem; color: var(--white); }
+    .sticky-bar .btn { padding: 12px 28px; font-size: 0.88rem; white-space: nowrap; }
+
+    /* FOOTER */
+    footer {
+      background: var(--ink);
+      color: oklch(0.5 0 0);
+      text-align: center;
+      padding: 48px 24px 90px;
+      font-size: 0.83rem;
+    }
+    footer img { height: 40px; margin-bottom: 12px; opacity: 0.65; }
+    .footer-desc { color: oklch(0.5 0 0); margin-bottom: 24px; max-width: 400px; margin-left: auto; margin-right: auto; font-size: 0.82rem; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 24px; flex-wrap: wrap; }
+    .footer-links a { color: oklch(0.56 0 0); text-decoration: none; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-disclaimer { color: oklch(0.42 0 0); font-size: 0.75rem; max-width: 480px; margin: 0 auto 12px; }
+
+    /* DIVIDER */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* ── PAIN VISUAL (bloco 3) ── */
+    .pain-section { padding-bottom: 0; }
+    .pain-visual {
+      background: var(--ink);
+      margin-top: 40px;
+      overflow: hidden;
+    }
+    .pain-visual-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+      min-height: 500px;
+    }
+    .pain-man-wrap {
+      position: relative;
+      height: 100%;
+      min-height: 480px;
+    }
+    .pain-man-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      filter: grayscale(20%);
+    }
+    .pain-man-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 60%, var(--ink) 100%),
+                  linear-gradient(to top, var(--ink) 0%, transparent 20%);
+    }
+    .thought-grid {
+      padding: 48px 40px 48px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .thought-card {
+      background: oklch(0.22 0 0);
+      border: 1px solid oklch(0.3 0 0);
+      border-radius: 12px;
+      padding: 16px 18px;
+      font-size: 0.9rem;
+      color: oklch(0.75 0 0);
+      line-height: 1.6;
+      position: relative;
+    }
+    .thought-card--highlight {
+      border-color: var(--gold);
+      background: oklch(0.2 0.02 82);
+      color: oklch(0.82 0 0);
+    }
+    .thought-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      line-height: 0;
+      vertical-align: -10px;
+      color: var(--gold);
+      margin-right: 4px;
+    }
+
+    @media (max-width: 700px) {
+      .pain-visual-inner {
+        grid-template-columns: 1fr;
+        min-height: unset;
+      }
+      .pain-man-wrap {
+        min-height: 280px;
+        max-height: 320px;
+      }
+      .pain-man-overlay {
+        background: linear-gradient(to bottom, transparent 50%, var(--ink) 100%);
+      }
+      .thought-grid { padding: 24px 18px 40px; }
+    }
+
+    @media (max-width: 600px) {
+      /* Hero */
+      .hero { padding: 48px 20px 48px; }
+      .hero-eyebrow {
+        font-size: 0.65rem;
+        padding: 5px 14px;
+        max-width: 260px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.5;
+      }
+      .hero h1 { font-size: 1.75rem; }
+      .btn { display: block; width: 100%; text-align: center; padding: 18px 20px; }
+      .btn-lg { font-size: 1rem; }
+      .hero-badges { gap: 12px; flex-direction: column; align-items: center; }
+
+      /* Sections */
+      .section { padding: 56px 18px; }
+      .section-title { font-size: 1.6rem; }
+
+      /* Cards */
+      .pain-5-grid { grid-template-columns: 1fr; }
+      .benefits-grid { grid-template-columns: 1fr; }
+      .bonuses-grid { grid-template-columns: 1fr; }
+      .forwhom-grid { grid-template-columns: 1fr; }
+      .direction-list { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+
+      /* Offer / CTA */
+      .offer-box  { padding: 28px 18px; }
+      .cta-box    { padding: 36px 18px; }
+      .cta-price  { font-size: 2.6rem; }
+      .honest-box { padding: 24px 18px; }
+      .transition-box { padding: 36px 18px; }
+
+      /* Author */
+      .author-card { flex-direction: column; align-items: center; text-align: center; }
+      .author-card .story-jobs { justify-content: center; }
+      .author-photo { width: 110px; height: 110px; }
+
+      /* Price table */
+      .price-table { font-size: 0.82rem; }
+      .price-row { padding: 12px 14px; gap: 8px; }
+
+      /* Pain prose */
+      .pain-prose { font-size: 0.93rem; }
+    }
+    /* ══════════════════════════════════════════
+       ANIMAÇÕES
+    ══════════════════════════════════════════ */
+
+    /* Botão — brilho deslizando */
+    @keyframes shimmer {
+      0%   { transform: translateX(-120%) skewX(-20deg); }
+      100% { transform: translateX(220%) skewX(-20deg); }
+    }
+    @keyframes pulse-shadow {
+      0%, 100% { box-shadow: 0 4px 20px oklch(0.67 0.11 82 / 0.35); }
+      50%       { box-shadow: 0 4px 40px oklch(0.67 0.11 82 / 0.65); }
+    }
+    .btn {
+      overflow: hidden;
+      animation: pulse-shadow 2.5s ease-in-out infinite;
+    }
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+      transform: translateX(-120%) skewX(-20deg);
+      animation: shimmer 2.2s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .btn { position: relative; }
+
+    /* Reveal on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-32px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(32px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    /* Delay escalonado para grids */
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+    .reveal-delay-5 { transition-delay: 0.40s; }
+    .reveal-delay-6 { transition-delay: 0.48s; }
+
+    /* Hover lift nos cards */
+    .t-card, .benefit-card, .bonus-card, .thought-card, .pain-card, .forwhom-item {
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+    .t-card:hover, .benefit-card:hover, .bonus-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+    }
+    .thought-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold) !important;
+    }
+
+    /* Hero h1 entrada suave */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-eyebrow { animation: fadeUp 0.6s ease both; animation-delay: 0.1s; }
+    .hero h1      { animation: fadeUp 0.7s ease both; animation-delay: 0.25s; }
+    .hero .hero-sub { animation: fadeUp 0.7s ease both; animation-delay: 0.4s; }
+    .hero .btn    { animation: fadeUp 0.7s ease both, pulse-shadow 2.5s ease-in-out 1s infinite; animation-delay: 0.55s, 1s; }
+
+    /* Número de preço pulsando levemente */
+    @keyframes price-pulse {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(1.03); }
+    }
+    .cta-price { animation: price-pulse 3s ease-in-out infinite; display: inline-block; }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+
+
+<!-- ══════════════════════════════════════════
+     BLOCO 1 — HERO (Vender Sozinho)
+══════════════════════════════════════════ -->
+<section class="hero">
+  <span class="hero-eyebrow">Quer trabalhar em Santa Catarina, mas não sabe por onde começar?</span>
+  <h1>Encontre sites, empresas e contatos que contratam freelancers em SC <em>sem perder horas pesquisando,</em> usando o Mapa SC Freelance.</h1>
+  <img src="imagens/mulher surpresa.png" alt="" class="hero-woman-img">
+  <a href="#oferta" class="btn btn-lg">QUERO ACESSAR AGORA</a>
+</section>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════════════════════
+     BLOCO 2 — DEPOIMENTOS
+══════════════════════════════════════════ -->
+<section class="section bg-mist">
+  <div class="section-inner">
+    <div class="eyebrow">Quem já tem em mãos</div>
+    <h2 class="section-title">Resultados de quem parou de procurar <em>no escuro</em></h2>
+    <p class="section-sub">Pessoas que estavam na mesma situação que você. E encontraram um caminho mais direto.</p>
+    <div class="testimonials-grid">
+
+      <figure class="t-card reveal reveal-delay-1">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">Em uma semana eu já tinha entrado em três grupos que não conhecia. Consegui uma entrevista logo no primeiro contato.</p>
+        <div class="t-author">
+          <div class="t-avatar">AS</div>
+          <div><div class="t-name">Amanda Silveira</div><div class="t-city">Florianópolis, SC</div></div>
+        </div>
+      </figure>
+
+      <figure class="t-card reveal reveal-delay-2">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">O material vale muito mais do que custa. Os contatos de RH foram o que mais me ajudou. Parei de ficar no vácuo.</p>
+        <div class="t-author">
+          <div class="t-avatar">RN</div>
+          <div><div class="t-name">Rafael Nunes</div><div class="t-city">Joinville, SC</div></div>
+        </div>
+      </figure>
+
+      <figure class="t-card reveal reveal-delay-3">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">Nunca pensei que existiam tantos grupos organizados aqui em SC. Fechei dois freelas em 10 dias depois de acessar.</p>
+        <div class="t-author">
+          <div class="t-avatar">PR</div>
+          <div><div class="t-name">Patrícia Rocha</div><div class="t-city">Blumenau, SC</div></div>
+        </div>
+      </figure>
+
+      <figure class="t-card reveal reveal-delay-4">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">Objetivo, direto ao ponto, sem enrolação. Exatamente o que eu precisava. Recomendo pra quem tá começando.</p>
+        <div class="t-author">
+          <div class="t-avatar">DA</div>
+          <div><div class="t-name">Diego Almeida</div><div class="t-city">Balneário Camboriú, SC</div></div>
+        </div>
+      </figure>
+
+      <figure class="t-card reveal reveal-delay-5">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">As mensagens prontas me deram confiança pra falar com as empresas. Eu não sabia como abordar e isso fez toda a diferença.</p>
+        <div class="t-author">
+          <div class="t-avatar">LF</div>
+          <div><div class="t-name">Luiza Ferreira</div><div class="t-city">Chapecó, SC</div></div>
+        </div>
+      </figure>
+
+      <figure class="t-card">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">Comprei sem esperar muito e me surpreendi. O plano de ação é ouro pra quem tá perdido sem saber por onde começar.</p>
+        <div class="t-author">
+          <div class="t-avatar">MP</div>
+          <div><div class="t-name">Marcelo Prado</div><div class="t-city">Itajaí, SC</div></div>
+        </div>
+      </figure>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     BLOCO 3 — DOR LATENTE PRINCIPAL
+══════════════════════════════════════════ -->
+<section class="section pain-section">
+  <div class="section-inner">
+    <div class="eyebrow">Vamos ser honestos</div>
+    <h2 class="section-title">Você sente que tá correndo atrás, mas sua vida <em>não sai do lugar?</em></h2>
+    <p class="section-sub">E sofre com pensamentos como...</p>
+  </div>
+
+  <!-- IMAGEM + CARDS FLUTUANTES -->
+  <div class="pain-visual">
+    <div class="pain-visual-inner">
+
+      <!-- Imagem do homem -->
+      <div class="pain-man-wrap">
+        <img src="imagens/homem cansado.png" alt="Homem cansado" class="pain-man-img">
+        <div class="pain-man-overlay"></div>
+      </div>
+
+      <!-- Cards como pensamentos flutuando -->
+      <div class="thought-grid">
+        <div class="thought-card reveal reveal-delay-1">
+          <span class="thought-mark">"</span>
+          Eu trabalho, trabalho, trabalho… e continuo no mesmo lugar. Todo mês o salário some nas contas.
+        </div>
+        <div class="thought-card reveal reveal-delay-2">
+          <span class="thought-mark">"</span>
+          Eu penso em mudar pra SC, mas trava tudo na minha cabeça. Não sei qual cidade escolher nem onde procurar.
+        </div>
+        <div class="thought-card reveal reveal-delay-3">
+          <span class="thought-mark">"</span>
+          Eu mando currículo, proposta, mensagem… e fico olhando o celular esperando uma resposta que nunca chega.
+        </div>
+        <div class="thought-card reveal reveal-delay-4">
+          <span class="thought-mark">"</span>
+          Eu quero fazer freela, mas ninguém me leva a sério. Os sites pedem premium antes de me dar qualquer chance.
+        </div>
+        <div class="thought-card thought-card--highlight reveal reveal-delay-5">
+          <span class="thought-mark">"</span>
+          Tenho medo de continuar mais um ano exatamente igual a esse. Ganhando pouco e sem ver saída.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     BLOCO 4 — TRANSIÇÃO DOR → SOLUÇÃO
+══════════════════════════════════════════ -->
+<section class="section bg-mist">
+  <div class="section-inner">
+    <div class="transition-box reveal">
+      <h2>Só que a verdade é simples: você não precisa de mais enrolação. <em>Você precisa de direção.</em></h2>
+      <p>Não tem como dar errado quando você sabe onde procurar, com quem falar e como evitar os caminhos que não levam a nada.</p>
+      <p>Você não precisa decorar teoria. Você precisa saber onde estão as oportunidades e como começar sua busca com mais clareza.</p>
+      <div class="direction-list">
+        <div class="direction-item">Onde procurar oportunidade de verdade</div>
+        <div class="direction-item">Com quem falar e como abordar</div>
+        <div class="direction-item">Quais caminhos evitar</div>
+        <div class="direction-item">Quais cidades olhar primeiro</div>
+        <div class="direction-item">Quais grupos entrar agora</div>
+        <div class="direction-item">Como aumentar suas chances de ser chamado</div>
+      </div>
+      <p style="color: oklch(0.65 0 0); font-size: 0.92rem;">Nada de promessa bonita sem caminho. Aqui é direto: o que você precisa é de oportunidade organizada.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     BLOCO 5 — AGORA VOCÊ VAI
+══════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="eyebrow">O que muda pra você</div>
+    <h2 class="section-title">Agora você vai saber <em>exatamente onde procurar.</em></h2>
+    <p class="section-sub">Pare de perder tempo em lugar errado. Cada item abaixo é um atalho real para sua busca.</p>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal reveal-delay-1">
+        <div class="benefit-icon">🏢</div>
+        <h3>Empresas que contratam</h3>
+        <p>Uma lista curada de empresas ativas contratando em SC. Para você mandar currículo nos lugares que realmente funcionam.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-2">
+        <div class="benefit-icon">👤</div>
+        <h3>Contatos de RH</h3>
+        <p>Contatos diretos de RHs que abrem vagas com frequência. Sem precisar depender de indicação de ninguém.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-3">
+        <div class="benefit-icon">💬</div>
+        <h3>Grupos ativos</h3>
+        <p>Os grupos onde as vagas aparecem primeiro, antes de chegar nos sites grandes e ficarem cheios de concorrente.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-4">
+        <div class="benefit-icon">🌐</div>
+        <h3>Sites que funcionam</h3>
+        <p>Os sites certos para buscar trabalho e freelas em SC, sem perder tempo com plataformas mortas ou que só favorecem quem paga premium.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-5">
+        <div class="benefit-icon">✉️</div>
+        <h3>Mensagens prontas</h3>
+        <p>Modelos de mensagens para abordar empresas e RHs com confiança. Sem parecer desesperado. Sem saber o que escrever.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-6">
+        <div class="benefit-icon">📋</div>
+        <h3>Plano de ação dos 7 dias</h3>
+        <p>O que fazer em cada dia da primeira semana. Passo a passo simples, sem papo de guru, para você sair da teoria e entrar em ação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     BLOCO 6 — O QUE VOCÊ RECEBE + BÔNUS
+══════════════════════════════════════════ -->
+<section class="section bg-mist" id="comprar">
+  <div class="section-inner">
+    <div class="eyebrow" style="text-align:center">O que você recebe</div>
+    <h2 class="section-title" style="text-align:center; margin-bottom:40px;">Um <em>arsenal completo</em> para conquistar sua próxima oportunidade em SC.</h2>
+
+    <div class="offer-wrap">
+      <div class="offer-box">
+        <span class="offer-tag">Produto Principal</span>
+        <h3 class="offer-title">Mapa SC Freelance</h3>
+        <ul class="offer-list">
+          <li>Lista de empresas contratando em SC</li>
+          <li>Contatos diretos de RHs ativos</li>
+          <li>Grupos com vagas em tempo real</li>
+          <li>Sites e plataformas que funcionam</li>
+          <li>Estratégias de busca que geram resposta</li>
+          <li>Plano de ação dos primeiros 7 dias</li>
+        </ul>
+        <p class="offer-old">Valor individual R$47</p>
+      </div>
+
+      <div class="mockup-wrap reveal" style="text-align:center; margin-top:40px;">
+        <img src="imagens/mockup.png" alt="Mockup Mapa SC Freelance" class="mockup-img">
+      </div>
+
+      <div style="margin-top: 40px;">
+        <div class="eyebrow" style="text-align:center; margin-bottom:20px;">+ 5 Bônus incluídos</div>
+        <div class="bonuses-grid">
+          <div class="bonus-card reveal reveal-delay-1">
+            <div class="bonus-num">Bônus 1</div>
+            <h3>Central de Contatos Freelancer SC</h3>
+            <p>Lista de contatos e canais para conseguir freelas sem depender de plataforma que pede premium.</p>
+            <div class="bonus-val">Valor <s>R$47</s></div>
+          </div>
+          <div class="bonus-card reveal reveal-delay-2">
+            <div class="bonus-num">Bônus 2</div>
+            <h3>Mapa das Empresas de RH</h3>
+            <p>Empresas de recrutamento em SC e onde encontrá-las para aumentar suas chances de ser chamado.</p>
+            <div class="bonus-val">Valor <s>R$37</s></div>
+          </div>
+          <div class="bonus-card reveal reveal-delay-3">
+            <div class="bonus-num">Bônus 3</div>
+            <h3>Grupos de Oportunidades SC</h3>
+            <p>Coletânea dos melhores grupos ativos do estado, com vagas reais e sem spam.</p>
+            <div class="bonus-val">Valor <s>R$37</s></div>
+          </div>
+          <div class="bonus-card reveal reveal-delay-4">
+            <div class="bonus-num">Bônus 4</div>
+            <h3>Plano Freelancer 7 Dias</h3>
+            <p>O que fazer em cada dia da primeira semana para sair do zero e começar a prospectar clientes.</p>
+            <div class="bonus-val">Valor <s>R$17</s></div>
+          </div>
+          <div class="bonus-card reveal reveal-delay-5">
+            <div class="bonus-num">Bônus 5</div>
+            <h3>Kit de Mensagens Prontas</h3>
+            <p>Templates para abordar empresas e RHs com confiança. Sem precisar saber o que escrever.</p>
+            <div class="bonus-val">Valor <s>R$17</s></div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     BLOCO 7 — PARA QUEM SERVE
+══════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="eyebrow">Para quem serve</div>
+    <h2 class="section-title">Feito para quem quer <em>sair da estagnação.</em></h2>
+    <p class="section-sub">Se você se reconhece em algum desses cenários, esse material é pra você.</p>
+    <div class="forwhom-grid">
+      <div class="forwhom-item reveal reveal-delay-1">Você está desempregado e não sabe por onde começar sua busca</div>
+      <div class="forwhom-item reveal reveal-delay-2">Você quer mudar para SC mas tem medo de chegar lá sem emprego</div>
+      <div class="forwhom-item reveal reveal-delay-3">Você procura renda extra e não quer depender de app ou salário baixo</div>
+      <div class="forwhom-item reveal reveal-delay-4">Você quer trabalhar como freelancer mas ninguém responde suas propostas</div>
+      <div class="forwhom-item reveal reveal-delay-5">Você está cansado de procurar vaga e só encontrar grupo morto e site que não funciona</div>
+      <div class="forwhom-item reveal reveal-delay-6">Você quer um caminho organizado, sem enrolação e sem promessa milagrosa</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     BLOCO 8 — ANCORAGEM COM PREÇO
+══════════════════════════════════════════ -->
+<section class="section bg-mist">
+  <div class="section-inner">
+    <div class="eyebrow">Ancoragem de valor</div>
+    <h2 class="section-title">Se comprado <em>separadamente...</em></h2>
+    <p class="section-sub">Veja o que você leva por um valor que cabe no seu bolso agora.</p>
+    <div class="price-table">
+      <div class="price-row reveal reveal-delay-1"><span>Mapa SC Freelance (material principal)</span><span>R$ 47</span></div>
+      <div class="price-row reveal reveal-delay-2"><span>Bônus 1 · Central de Contatos Freelancer SC</span><span>R$ 47</span></div>
+      <div class="price-row reveal reveal-delay-2"><span>Bônus 2 · Mapa das Empresas de RH</span><span>R$ 37</span></div>
+      <div class="price-row reveal reveal-delay-3"><span>Bônus 3 · Grupos de Oportunidades SC</span><span>R$ 27</span></div>
+      <div class="price-row reveal reveal-delay-3"><span>Bônus 4 · Plano Freelancer 7 Dias</span><span>R$ 17</span></div>
+      <div class="price-row reveal reveal-delay-4"><span>Bônus 5 · Kit de Mensagens Prontas</span><span>R$ 17</span></div>
+      <div class="price-row subtotal reveal reveal-delay-5"><span>Valor total</span><span>R$ 192,00</span></div>
+      <div class="price-row final-price reveal reveal-delay-6"><span>Hoje, por apenas</span><span>R$ 67,00</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     BLOCO 9 — VALOR / PRIMEIRO BOTÃO DE COMPRA
+══════════════════════════════════════════ -->
+<section class="section" id="oferta">
+  <div class="section-inner" style="text-align:center;">
+    <div class="eyebrow">Sua decisão</div>
+    <h2 class="section-title">Menos que uma pizza. <em>Uma nova chance.</em></h2>
+    <p style="color:var(--graphite); margin-bottom:8px;">De <s>R$ 192,00</s> por apenas</p>
+    <p style="font-family:'Playfair Display',serif; font-size:3.4rem; font-weight:700; line-height:1; background:var(--gold-grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:4px;">R$ 67</p>
+    <p style="color:var(--graphite); font-size:0.85rem; margin-bottom:32px;">à vista ou parcelado no cartão</p>
+    <a href="https://sun.eduzz.com/39YNAQJJWO" target="_blank" rel="noopener" class="btn btn-lg">QUERO ACESSAR AGORA</a>
+    <div class="hero-badges" style="margin-top:18px; justify-content:center;">
+      <span class="hero-badge">Pagamento 100% seguro</span>
+      <span class="hero-badge">7 dias de garantia</span>
+      <span class="hero-badge">Acesso imediato por e-mail</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     BLOCO 10 — CONVERSA SÉRIA
+══════════════════════════════════════════ -->
+<section class="section bg-mist">
+  <div class="section-inner">
+    <div class="eyebrow">Uma conversa séria</div>
+    <h2 class="section-title">Este material não promete <em>o impossível.</em></h2>
+    <div class="honest-box">
+      <p>Não te prometo emprego garantido. Não te prometo renda garantida.</p>
+      <p>O que eu entrego é <strong>organização, contatos e direção.</strong> Aquilo que muita gente leva anos pra descobrir sozinha.</p>
+      <p>Você pode continuar salvando vídeo, entrando em grupo aleatório e esperando alguém te mandar um contato.</p>
+      <p>Ou pode <strong>organizar sua busca hoje</strong> e começar a procurar oportunidade com mais direção.</p>
+      <p>Você pode continuar indo no escuro.</p>
+      <p>Ou pode pegar um caminho mais simples.</p>
+      <p>Porque no fim das contas, oportunidades aparecem para quem está preparado. E este material é a sua preparação.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     BLOCO 11 — AUTORIDADE
+══════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="eyebrow">Quem organizou este material</div>
+    <div class="author-card">
+      <img class="author-photo" src="imagens/foto giovanni.PNG" alt="Giovanni, autor do material">
+      <div class="author-text">
+        <h3>Oi, eu sou o <span class="gold-text">Giovanni.</span></h3>
+        <p>Passei anos batendo de porta em porta, mandando currículo em dezenas de empresas e testando grupos aleatórios até entender <strong>onde estavam as oportunidades reais</strong> em Santa Catarina.</p>
+        <p>Antes de organizar tudo isso, trabalhei em:</p>
+        <div class="story-jobs">
+          <span class="story-job">Operador de caixa</span>
+          <span class="story-job">Repositor</span>
+          <span class="story-job">Auxiliar de limpeza</span>
+          <span class="story-job">Auxiliar de cozinha</span>
+          <span class="story-job">Auxiliar de expedição</span>
+        </div>
+        <p>Durante esse caminho, fui encontrando contatos, empresas e grupos que realmente geravam oportunidades. Algo que ninguém entrega pronto. Migrei pro digital, encontrei freelas e percebi que ninguém organiza esse caminho.</p>
+        <p>O Mapa SC Freelance é tudo o que eu queria ter tido quando comecei.</p>
+        <p style="font-style: italic; border-left: 3px solid var(--gold); padding-left: 16px; color: var(--graphite);">"Se eu tivesse esse material anos atrás, teria economizado meses de tentativa e erro."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     BLOCO 12 — VALOR / SEGUNDO BOTÃO DE COMPRA
+══════════════════════════════════════════ -->
+<section class="section bg-ink">
+  <div class="section-inner">
+    <div class="cta-box" style="background: oklch(0.22 0 0);">
+      <div style="text-align:center; margin-bottom:28px;">
+        <img src="imagens/mockup.png" alt="Mockup Mapa SC Freelance" class="mockup-img" style="max-width:420px;">
+      </div>
+      <div class="eyebrow">Última chamada</div>
+      <h2>O acesso completo por <em>R$ 67.</em></h2>
+      <p style="color: oklch(0.65 0 0); margin-bottom: 28px; font-size: 0.93rem;">Ebook principal + 5 bônus estratégicos. Acesso imediato após a compra.</p>
+      <ul class="cta-list">
+        <li>Mapa SC Freelance (material completo)</li>
+        <li>Central de Contatos Freelancer SC</li>
+        <li>Mapa das Empresas de RH</li>
+        <li>Grupos de Oportunidades SC</li>
+        <li>Plano Freelancer 7 Dias</li>
+        <li>Kit de Mensagens Prontas</li>
+      </ul>
+      <p class="cta-old">De R$ 192,00</p>
+      <div class="cta-price">R$ 67</div>
+      <p class="cta-install">à vista ou parcelado no cartão</p>
+      <a href="https://sun.eduzz.com/39YNAQJJWO" target="_blank" rel="noopener" class="btn btn-lg">QUERO ACESSAR AGORA</a>
+      <div class="cta-badges">
+        <span class="cta-badge">Garantia incondicional de 7 dias</span>
+        <span class="cta-badge">Entrega imediata por e-mail</span>
+        <span class="cta-badge">Ambiente 100% seguro</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     BLOCO 13 — FAQ
+══════════════════════════════════════════ -->
+<section class="section bg-mist">
+  <div class="section-inner">
+    <div class="eyebrow">Perguntas frequentes</div>
+    <h2 class="section-title" style="margin-bottom:32px;">Ainda em <em>dúvida?</em></h2>
+    <div class="faq-list">
+      <details class="faq">
+        <summary>O material é físico?</summary>
+        <p>Não. É 100% digital, em PDF, entregue por e-mail assim que o pagamento é confirmado. Você acessa em qualquer aparelho.</p>
+      </details>
+      <details class="faq">
+        <summary>Quando eu recebo o acesso?</summary>
+        <p>A entrega é imediata. Assim que a compra for aprovada, o acesso é enviado por e-mail com o link para baixar todos os arquivos.</p>
+      </details>
+      <details class="faq">
+        <summary>Funciona para quem está fora de Santa Catarina?</summary>
+        <p>Sim. O foco é SC, com contatos, grupos e empresas do estado. Se você quer se mudar para SC, esse material foi feito exatamente para você se preparar antes de ir.</p>
+      </details>
+      <details class="faq">
+        <summary>Tem garantia?</summary>
+        <p>Sim. Você tem 7 dias para acessar e testar. Se não gostar, devolvemos 100% do valor sem burocracia e sem perguntas.</p>
+      </details>
+      <details class="faq">
+        <summary>Preciso ter experiência ou habilidade específica?</summary>
+        <p>Não. O material foi feito para quem está começando ou quer se reorganizar na busca por oportunidades. Nenhuma experiência prévia necessária.</p>
+      </details>
+      <details class="faq">
+        <summary>Posso acessar pelo celular?</summary>
+        <p>Sim. O PDF abre em qualquer aparelho: celular, tablet ou computador. Sem precisar instalar nada.</p>
+      </details>
+      <details class="faq">
+        <summary>Isso é só uma lista de sites que eu já conheço?</summary>
+        <p>Não. O material vai além dos sites genéricos. Inclui contatos diretos de RH, grupos ativos específicos de SC, empresas que abrem vagas com frequência e mensagens prontas para você abordar cada um deles com mais eficiência.</p>
+      </details>
+      <details class="faq">
+        <summary>E se eu não conseguir resultado?</summary>
+        <p>Você tem 7 dias de garantia total. Se achar que o material não te ajudou em nada, devolvemos o valor inteiro. Sem risco pra você.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     BLOCO 14 — RODAPÉ
+══════════════════════════════════════════ -->
+<footer>
+  <img src="imagens/logo.jpeg" alt="Mapa SC Freelance">
+  <p class="footer-desc">Contatos, empresas e estratégias para quem busca oportunidades reais em Santa Catarina.</p>
+  <div class="footer-links">
+    <a href="#">Política de Privacidade</a>
+    <a href="#">Termos de Uso</a>
+    <a href="mailto:gioseed@icloud.com">Contato</a>
+    <a href="#">Instagram</a>
+  </div>
+  <p class="footer-disclaimer">Este produto não garante resultados. Os resultados variam de pessoa para pessoa e dependem do esforço individual de cada um.</p>
+  <p>© 2026 Mapa SC Freelance. Todos os direitos reservados.</p>
+</footer>
+
+
+
+
+<script>
+  // Intersection Observer para reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
