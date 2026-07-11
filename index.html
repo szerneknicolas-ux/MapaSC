@@ -8,13 +8,46 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-42CLQQFFWX');
+
+    // GA4 e-commerce: dispara view_item quando a seção de oferta fica visível
+    document.addEventListener('DOMContentLoaded', function() {
+      var oferta = document.getElementById('oferta');
+      if (oferta && 'IntersectionObserver' in window) {
+        var visto = false;
+        new IntersectionObserver(function(entries) {
+          if (entries[0].isIntersecting && !visto) {
+            visto = true;
+            gtag('event', 'view_item', {
+              currency: 'BRL',
+              value: 37.00,
+              items: [{ item_id: 'mapa-sc-freelance', item_name: 'Mapa SC Freelance', price: 37.00, quantity: 1 }]
+            });
+          }
+        }, { threshold: 0.3 }).observe(oferta);
+      }
+
+      // begin_checkout: clique em qualquer botão de compra
+      document.querySelectorAll('a[href*="eduzz.com"]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          gtag('event', 'begin_checkout', {
+            currency: 'BRL',
+            value: 37.00,
+            items: [{ item_id: 'mapa-sc-freelance', item_name: 'Mapa SC Freelance', price: 37.00, quantity: 1 }]
+          });
+        });
+      });
+    });
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mapa SC Freelance — Encontre trabalho e freelas em Santa Catarina</title>
+  <!-- Preload hero image (LCP) -->
+  <link rel="preload" as="image" href="imagens/mulher-no-celular.webp" fetchpriority="high">
+  <!-- Fonts: preconnect + non-blocking load -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&display=swap" rel="stylesheet"></noscript>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -837,7 +870,7 @@
 <section class="hero">
   <span class="hero-eyebrow">Quer saber onde encontrar contatos reais para vagas, freela e renda extra em SC?</span>
   <h1>Acesse o caminho mais rápido para encontrar sites, empresas e contatos reais que oferecem <em>vagas, freelas e renda extra</em> em Santa Catarina.</h1>
-  <img src="imagens/mulher-no-celular.png" alt="" class="hero-woman-img">
+  <img src="imagens/mulher-no-celular.webp" alt="Freelancer em supermercado em Santa Catarina" class="hero-woman-img" fetchpriority="high">
   <a href="#oferta" class="btn btn-lg">QUERO MEU FREELA AGORA</a>
 </section>
 
@@ -859,7 +892,7 @@
 
       <!-- Imagem do homem -->
       <div class="pain-man-wrap">
-        <img src="imagens/homem-cansado.png" alt="Homem cansado" class="pain-man-img">
+        <img src="imagens/homem-cansado.webp" alt="Homem cansado" class="pain-man-img" loading="lazy">
         <div class="pain-man-overlay"></div>
       </div>
 
@@ -983,7 +1016,7 @@
       </div>
 
       <div class="mockup-wrap reveal" style="text-align:center; margin-top:40px;">
-        <img src="imagens/mockup.png" alt="Mockup Mapa SC Freelance" class="mockup-img">
+        <img src="imagens/mockup.webp" alt="Mockup Mapa SC Freelance" class="mockup-img" loading="lazy">
       </div>
 
       <div style="margin-top: 40px;">
@@ -1063,7 +1096,7 @@
       <div class="price-row reveal reveal-delay-3"><span>Bônus 3 · Grupos de Oportunidades SC</span><span>R$ 27</span></div>
       <div class="price-row reveal reveal-delay-3"><span>Bônus 4 · Plano Freelancer 7 Dias</span><span>R$ 17</span></div>
       <div class="price-row reveal reveal-delay-4"><span>Bônus 5 · Kit de Mensagens Prontas</span><span>R$ 17</span></div>
-      <div class="price-row subtotal reveal reveal-delay-5"><span>Valor total</span><span>R$ 97,00</span></div>
+      <div class="price-row subtotal reveal reveal-delay-5"><span>Valor total</span><span>R$ 172,00</span></div>
       <div class="price-row final-price reveal reveal-delay-6"><span>Hoje, por apenas</span><span>R$ 37,00</span></div>
     </div>
   </div>
@@ -1117,7 +1150,7 @@
   <div class="section-inner">
     <div class="eyebrow">Quem organizou este material</div>
     <div class="author-card">
-      <img class="author-photo" src="imagens/foto-giovanni.png" alt="Giovanni, autor do material">
+      <img class="author-photo" src="imagens/foto-giovanni.webp" alt="Giovanni, autor do material" loading="lazy">
       <div class="author-text">
         <h3>Oi, eu sou o <span class="gold-text">Giovanni.</span></h3>
         <p>Passei anos batendo de porta em porta, mandando currículo em dezenas de empresas e testando grupos aleatórios até entender <strong>onde estavam as oportunidades reais</strong> em Santa Catarina.</p>
@@ -1145,7 +1178,7 @@
   <div class="section-inner">
     <div class="cta-box" style="background: oklch(0.22 0 0);">
       <div style="text-align:center; margin-bottom:28px;">
-        <img src="imagens/mockup.png" alt="Mockup Mapa SC Freelance" class="mockup-img" style="max-width:420px;">
+        <img src="imagens/mockup.png" alt="Mockup Mapa SC Freelance" class="mockup-img" style="max-width:420px;" width="960" height="720" loading="lazy" decoding="async">
       </div>
       <div class="eyebrow">Última chamada</div>
       <h2>O acesso completo por <em>R$ 37.</em></h2>
